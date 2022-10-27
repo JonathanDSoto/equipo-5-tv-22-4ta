@@ -49,7 +49,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="apps-ecommerce-add-product.html" class="btn btn-success"
+                                                    <a href="../products/addproduct.php" class="btn btn-success"
                                                         id="addproduct-btn"><i
                                                             class="ri-add-line align-bottom me-1"></i> Add Product</a>
                                                 </div>
@@ -145,7 +145,7 @@
                                                                                 </div>
                                                                                 <div class="flex-grow-1">
                                                                                     <h5 class="fs-14 mb-1">
-                                                                                        <a href="../productos/index.php" class="text-dark">Urban Ladder Pashe</a>
+                                                                                        <a href="../products/details.php" class="text-dark">Urban Ladder Pashe</a>
                                                                                     </h5>
                                                                                     <p class="text-muted mb-0">
                                                                                         Category :
@@ -170,7 +170,7 @@
                                                                                 </button>
                                                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                                                     <li>
-                                                                                        <a class="dropdown-item" href="apps-ecommerce-product-details.html">
+                                                                                        <a class="dropdown-item" href="../products/details.php">
                                                                                             <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                                             View
                                                                                         </a>
@@ -245,23 +245,10 @@
 
         </div>
         <!-- END layout-wrapper -->
-
-
-
-        <!--start back-to-top-->
-        <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-            <i class="ri-arrow-up-line"></i>
-        </button>
+      
         <!--end back-to-top-->
 
-        <!--preloader-->
-        <div id="preloader">
-            <div id="status">
-                <div class="spinner-border text-primary avatar-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </div>
+      
 
         <?php include "../layouts/scripts.template.php"; ?>
 
@@ -274,6 +261,10 @@
 
         <!-- ecommerce product list -->
         <script src="../public/js/pages/ecommerce-product-list.init.js"></script>
+
+    </div>
+
+    <?php include "../layouts/footer.template.php"; ?>
 
 </body>
 
