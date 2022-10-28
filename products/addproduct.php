@@ -287,6 +287,7 @@
                 </div>
 
             </div>
+            <?php include "../layouts/footer.template.php"; ?>
         </div>
 
     </div>
@@ -294,7 +295,7 @@
     <script src="../public/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
     <script src="../public/libs/dropzone/dropzone-min.js"></script>
     <script src="../public/js/pages/ecommerce-product-create.init.js"></script>
-    <?php include "../layouts/footer.template.php"; ?>
+   
 
 
 </body>

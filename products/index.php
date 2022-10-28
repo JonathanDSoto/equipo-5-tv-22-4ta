@@ -244,27 +244,14 @@
             <!-- end main content-->
 
         </div>
-        <!-- END layout-wrapper -->
-      
-        <!--end back-to-top-->
+     
 
-      
 
         <?php include "../layouts/scripts.template.php"; ?>
-
-        <!-- nouisliderribute js -->
         <script src="../public/libs/nouislider/nouislider.min.js"></script>
         <script src="../public/libs/wnumb/wNumb.min.js"></script>
-
-        <!-- gridjs js -->
         <script src="../public/libs/gridjs/gridjs.umd.js"></script>
-
-        <!-- ecommerce product list -->
         <script src="../public/js/pages/ecommerce-product-list.init.js"></script>
-
-    </div>
-
-    <?php include "../layouts/footer.template.php"; ?>
 
 </body>
 
