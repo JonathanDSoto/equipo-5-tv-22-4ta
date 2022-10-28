@@ -59,7 +59,7 @@
                                                     <a href="../products/ordenes.details.php" class="nav-link" data-key="t-order-details"> Order Details </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="apps-ecommerce-customers.html" class="nav-link" data-key="t-customers"> Customers </a>
+                                                    <a href="../clientes/cliente.php" class="nav-link" data-key="t-customers"> Customers </a>
                                                 </li>
                                         
                                                 <li class="nav-item">
