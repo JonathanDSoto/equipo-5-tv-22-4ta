@@ -118,7 +118,7 @@
                                                             <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
                                                         </div>
                                                     </th>
-                                                    <td class="id"><a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2101</a></td>
+                                                    <td class="id"><a href="ordenes.details.php" class="fw-medium link-primary">#VZ2101</a></td>
                                                     <td class="customer_name">Frank Hook</td>
                                                     <td class="product_name">Puma Tshirt</td>
                                                     <td class="amount">$654</td>
@@ -128,7 +128,7 @@
                                                     <td>
                                                         <ul class="list-inline hstack gap-2 mb-0">
                                                             <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">
-                                                                <a href="apps-ecommerce-order-details.html" class="text-primary d-inline-block">
+                                                                <a href="../products/ordenes.details.php" class="text-primary d-inline-block">
                                                                     <i class="ri-eye-fill fs-16"></i>
                                                                 </a>
                                                             </li>

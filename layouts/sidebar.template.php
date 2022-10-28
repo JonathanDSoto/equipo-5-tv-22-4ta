@@ -53,10 +53,10 @@
                                                     <a href="../products/addproduct.php" class="nav-link" data-key="t-create-product"> Create Product </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="apps-ecommerce-orders.html" class="nav-link" data-key="t-orders"> Orders </a>
+                                                    <a href="../products/ordenes.php" class="nav-link" data-key="t-orders"> Orders </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="apps-ecommerce-order-details.html" class="nav-link" data-key="t-order-details"> Order Details </a>
+                                                    <a href="../products/ordenes.details.php" class="nav-link" data-key="t-order-details"> Order Details </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="apps-ecommerce-customers.html" class="nav-link" data-key="t-customers"> Customers </a>
