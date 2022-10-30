@@ -1,3 +1,13 @@
+<?php
+    include "../app/ProductsController.php";
+
+    $productController = new ProductsController();
+    
+    $product = $productController->getProductBySlug($_GET['slug']);
+
+    echo json_encode($product);
+?>
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
     data-sidebar-image="none" data-preloader="disable">
@@ -55,7 +65,7 @@
                                                 <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
-                                                            <img src="../public/images/products/img-8.png" alt="" class="img-fluid d-block" />
+                                                            <img src="<?= $product->cover ?>" alt="" class="img-fluid d-block" />
                                                         </div>
                                                         
                                                     </div>
@@ -71,7 +81,7 @@
                                             <div class="mt-xl-0 mt-5">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
-                                                        <h4>Full Sleeve Sweatshirt for Men (Pink)</h4>
+                                                        <h4><?= $product->name ?></h4>
                                                         <div class="hstack gap-3 flex-wrap">
                                                             <div><a href="#" class="text-primary d-block">Tommy Hilfiger</a></div>
                                                             <div class="vr"></div>
@@ -183,7 +193,7 @@
 
                                                 <div class="mt-4 text-muted">
                                                     <h5 class="fs-14">Description :</h5>
-                                                    <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
+                                                    <p><?= $product->description ?></p>
                                                 </div>
 
                                                 <div class="row">
@@ -221,7 +231,11 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <th scope="row" style="width: 200px;">Category</th>
-                                                                            <td>T-Shirt</td>
+                                                                            <td><?php foreach ($product->categories as $category): ?>
+                                                                                            
+                                                                                <?= $category->name ?>
+                                                                                            
+                                                                                <?php endforeach ?></span></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row">Brand</th>
@@ -246,7 +260,7 @@
                                                         <div class="tab-pane fade" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
                                                             <div>
                                                                 <h5 class="font-size-16 mb-3">Tommy Hilfiger Sweatshirt for Men (Pink)</h5>
-                                                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
+                                                                <p><?= $product->description ?></p>
                                                                 <div>
                                                                     <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> Machine Wash</p>
                                                                     <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> Fit Type: Regular</p>

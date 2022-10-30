@@ -1,3 +1,18 @@
+<?php
+    include "../app/ProductsController.php";
+    include "../app/PresentationController.php";
+    include "../app/UserController.php";
+
+    $productController = new ProductsController();
+    $products = $productController->getAllProducts();
+
+    $presentationController = new PresentationController();
+
+    $userController = new UserController();
+    //$user = $UserController->getUser(1);
+    //echo json_encode($user);
+    //$presentation = $presentationController->getProductPresentation($products->id);
+?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
     data-sidebar-image="none" data-preloader="disable">
@@ -129,36 +144,43 @@
                                                                     </th>
                                                                 </tr>
                                                             </thead>
+                                                            <?php if (isset($products) && count($products)): ?>
+                                                            <?php foreach ($products as $product): ?>
+                                                                
                                                             <thead class="gridjs-tbody">
                                                                 <tr class="gridjs-tr">
                                                                     <td data-column-id="#" class="gridjs-td">
-                                                                        <div class="gridjs-th-content">#</div>
+                                                                        <div class="gridjs-th-content">#<?= $product->id ?></div>
                                                                     </td>
                                                                     <td data-column-id="product" class="gridjs-td">
                                                                         <span>
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="flex-shrink-0 me-3">
                                                                                     <div class="avatar-sm bg-light rounded p-1">
-                                                                                        <img src="../public/images/products/img-2.png" alt=""
+                                                                                        <img src="<?= $product->cover ?>" alt=""
                                                                                             class="img-fluid d-block">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="flex-grow-1">
                                                                                     <h5 class="fs-14 mb-1">
-                                                                                        <a href="../products/details.php" class="text-dark">Urban Ladder Pashe</a>
+                                                                                        <a href="details.php?slug=<?= $product->slug ?>" class="text-dark"><?= $product->name ?></a>
                                                                                     </h5>
                                                                                     <p class="text-muted mb-0">
                                                                                         Category :
-                                                                                        <span class="fw-medium">Furniture</span>
+                                                                                        <span class="fw-medium"><?php foreach ($product->categories as $category): ?>
+                                                                                            
+                                                                                                <?= $category->name ?>
+                                                                                            
+                                                                                        <?php endforeach ?></span>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
                                                                         </span>
                                         
                                                                     </td>
-                                                                    <td data-column-id="stock" class="gridjs-td">80</td>
+                                                                    <td data-column-id="stock" class="gridjs-td"><?= $presentation->stock ?></td>
                                                                     <td data-column-id="price" class="gridjs-td">
-                                                                        <span>$160.00</span>
+                                                                        <span><?= $presentation->amount ?></span>
                                                                     </td>
                                         
                                                                     <td data-column-id="action" class="gridjs-td">
@@ -170,7 +192,7 @@
                                                                                 </button>
                                                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                                                     <li>
-                                                                                        <a class="dropdown-item" href="../products/details.php">
+                                                                                        <a class="dropdown-item" href="details.php?slug=<?= $product->slug ?>">
                                                                                             <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                                             View
                                                                                         </a>
@@ -184,11 +206,13 @@
                                                                                     </li>
                                                                                     <li class="dropdown-divider"></li>
                                                                                     <li>
-                                                                                        <a class="dropdown-item remove-list" href="#" data-id="undefined"
+                                                                                        <a type="submit" class="dropdown-item remove-list" href="#" data-id="undefined"
                                                                                             data-bs-toggle="modal" data-bs-target="#removeItemModal">
                                                                                             <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                              Delete 
                                                                                         </a>
+
+
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -197,6 +221,9 @@
                                         
                                                                 </tr>
                                                             </thead>
+                                                            <?php endforeach ?>
+                                
+                                                            <?php endif ?>
                                                         </table>
                                                     </div>
                                                     <div class="gridjs-footer">
@@ -252,6 +279,8 @@
         <script src="../public/libs/wnumb/wNumb.min.js"></script>
         <script src="../public/libs/gridjs/gridjs.umd.js"></script>
         <script src="../public/js/pages/ecommerce-product-list.init.js"></script>
+
+
 
 </body>
 

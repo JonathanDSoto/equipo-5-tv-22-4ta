@@ -1,3 +1,12 @@
+<?phpd
+    include "../app/ProductsController.php";
+    include "../app/PresentationController.php";
+
+    $productController = new ProductsController();
+    $products = $productController->getAllProducts();
+    $productCategory = new CategoryController();
+    $categories = $productCategory->getAllCategories();
+?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
     data-sidebar-image="none" data-preloader="disable">
@@ -43,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
+                    <form method="post" action="/index.php" id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card">
@@ -53,14 +62,14 @@
                                             <input type="hidden" class="form-control" id="formAction" name="formAction"
                                                 value="add">
                                             <input type="text" class="form-control d-none" id="product-id-input">
-                                            <input type="text" class="form-control" id="product-title-input" value=""
+                                            <input type="text" name="name" class="form-control" id="product-title-input" value=""
                                                 placeholder="Enter product title" required>
                                             <div class="invalid-feedback">Please Enter a product title.</div>
                                         </div>
                                         <div>
                                             <label>Product Description</label>
 
-                                            <div id="ckeditor-classic">
+                                            <div name="description" id="ckeditor-classic">
                                                 <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton.
                                                     Material composition is 100% organic cotton. This is one of the
                                                     world’s leading designer lifestyle brands and is internationally
@@ -135,7 +144,7 @@
                                                         <div class="d-flex p-2">
                                                             <div class="flex-shrink-0 me-3">
                                                                 <div class="avatar-sm bg-light rounded">
-                                                                    <img data-dz-thumbnail
+                                                                    <img name="cover" data-dz-thumbnail
                                                                         class="img-fluid rounded d-block" src="#"
                                                                         alt="Product-Image" />
                                                                 </div>
@@ -185,7 +194,7 @@
                                                             <label class="form-label"
                                                                 for="manufacturer-brand-input">
                                                                 Brand</label>
-                                                            <input type="text" class="form-control"
+                                                            <input name="brand_id" type="text" class="form-control"
                                                                 id="manufacturer-brand-input"
                                                                 placeholder="Enter manufacturer brand">
                                                         </div>
@@ -237,6 +246,8 @@
                                 <!-- end card -->
                                 <div class="text-end mb-3">
                                     <button type="submit" class="btn btn-success w-sm">Submit</button>
+
+                                   
                                 </div>
                             </div>
                             <!-- end col -->
@@ -253,7 +264,12 @@
                                                 New</a>Select product category</p>
                                         <select class="form-select" id="choices-category-input"
                                             name="choices-category-input" data-choices data-choices-search-false>
-                                            <option value="Appliances">Appliances</option>
+                                            <?php foreach ($categories as $category): ?>
+                                                <option value="<?= $category->id ?>" >
+                                                    <?= $category->name ?>
+                                                </option>
+                                            <?php endforeach ?>
+                                            
                                         </select>
                                     </div>
                                     <!-- end card body -->
@@ -282,6 +298,11 @@
                             <!-- end col -->
                         </div>
                         <!-- end row -->
+
+                        <input type="hidden" id="action" name="action" value="createProduct">
+
+                        <input type="hidden" id="id_product" name="id">
+                        <input type="hidden" name="super_token" value="<?= $_SESSION['super_token'] ?>">
 
                     </form>
                 </div>
