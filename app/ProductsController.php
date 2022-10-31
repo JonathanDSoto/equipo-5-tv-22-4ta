@@ -83,6 +83,17 @@ class ProductsController
     {
         $curl = curl_init();
 
+        $categories = explode (' ', $categories);
+        $tags = explode (' ', $tags);
+
+        foreach ($categories as $key => $category) {
+            $catArray['categories['.$key.']'] = $category;
+        }
+
+        foreach ($tags as $key => $tags) {
+            $tagArray['tags['.$key.']'] = $tags;
+        }
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
             CURLOPT_RETURNTRANSFER => true,
@@ -99,10 +110,8 @@ class ProductsController
                 'features' => $features,
                 'brand_id' => $marca,
                 'cover' => new CURLFILE($_FILES['cover']['tmp_name']),
-                'categories[0]' => $categories[0],
-                'categories[1]' => $categories[1],
-                'tags[0]' => $tags[0],
-                'tags[1]' => $tags[1]
+                $catArray,
+                $tagArray
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer ' . $_SESSION['token']
@@ -196,6 +205,17 @@ class ProductsController
     {
         $curl = curl_init();
 
+        $categories = explode (' ', $categories);
+        $tags = explode (' ', $tags);
+
+        foreach ($categories as $key => $category) {
+            $catArray = '&categories['.$key.']=' . urlencode($category);
+        }
+
+        foreach ($tags as $key => $tags) {
+            $tagArray = 'tags['.$key.']=' . urlencode($tags);
+        }
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
             CURLOPT_RETURNTRANSFER => true,
@@ -212,10 +232,8 @@ class ProductsController
                 '&features=' . $features .
                 '&brand_id=' . $marca .
                 '&id=' . $id .
-                '&categories%5B0%5D=' . $categories[0] .
-                '&categories%5B1%5D=' . $categories[1] .
-                '&tags%5B0%5D=' . $tags[0] .
-                '&tags%5B1%5D=' . $tags[1],
+                $catArray .
+                $tagArray ,
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer ' . $_SESSION['token'],
                 'Content-Type: application/x-www-form-urlencoded'
