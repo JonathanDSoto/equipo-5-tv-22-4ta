@@ -1,0 +1,7 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+
+#RULES
+RewriteRule ^auth$ app/AuthController.php
+
+RewriteRule ^products/index/(.+)/$ products/index.php?slug=$1
